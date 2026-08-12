@@ -1,0 +1,49 @@
+{
+  "law": "LCT_monotonicity_QPU",
+  "backend": "ibm_marrakesh",
+  "job_id": "d9u42dt35hes73fje2bg",
+  "shots": 4096,
+  "n_circuits": 36,
+  "n_theta": 12,
+  "bases": [
+    "X",
+    "Y",
+    "Z"
+  ],
+  "method": "full_tomography_3_pauli_bases",
+  "C_values": [
+    1.0,
+    0.9898,
+    0.9595,
+    0.9096,
+    0.8413,
+    0.7557,
+    0.6549,
+    0.5406,
+    0.4154,
+    0.2817,
+    0.1423,
+    0.0
+  ],
+  "P_sig_values": [
+    0.5224,
+    0.5609,
+    0.648,
+    0.5425,
+    0.5679,
+    0.4885,
+    0.5267,
+    0.4298,
+    0.4926,
+    0.4245,
+    0.4137,
+    0.5333
+  ],
+  "corr_pearson": 0.6195437986516268,
+  "corr_spearman": 0.5944055944055945,
+  "P_sig_range": [
+    0.4137,
+    0.648
+  ],
+  "verdict": "FAIL"
+}
