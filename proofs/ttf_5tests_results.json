@@ -1,0 +1,154 @@
+{
+  "test_1_oscillation_synchrone": {
+    "verdict": "PASS",
+    "corr_AB": -1.0,
+    "omega_A": 1.5707963267948966,
+    "omega_B": 1.5707963267948966,
+    "omega_attendu": 1.5707963267948966,
+    "n_steps": 40
+  },
+  "test_2_compression_topologique": {
+    "verdict": "PASS",
+    "plain_top_persistence": 1.4071174004410825,
+    "ttf_top_persistence": 3.866038324471861,
+    "ratio": 2.747488108142215,
+    "noise_plain": 972,
+    "noise_ttf": 472,
+    "n_cycles_plain": 3590,
+    "n_cycles_ttf": 859,
+    "n_plain": 240,
+    "n_ttf": 120
+  },
+  "test_3_puits_tsp": {
+    "verdict": "PASS",
+    "path": [
+      15,
+      16,
+      28,
+      29,
+      53,
+      54,
+      101,
+      100,
+      85,
+      84,
+      75,
+      74,
+      15
+    ],
+    "cost": 54.46166629445836,
+    "method": "synthetic_shortest_edges",
+    "min_segment": 1.2257756727884581,
+    "n_short_bonds": 6,
+    "n_h_bonds": 0,
+    "shortest_segments": [
+      [
+        "C",
+        "O",
+        1.226
+      ],
+      [
+        "C",
+        "O",
+        1.228
+      ],
+      [
+        "O",
+        "C",
+        1.228
+      ],
+      [
+        "O",
+        "C",
+        1.229
+      ],
+      [
+        "O",
+        "C",
+        1.229
+      ]
+    ]
+  },
+  "test_4_mcb_parle_au_llm": {
+    "verdict": "PASS",
+    "n_triplets": 50,
+    "reconstructed_phrase": "il existe une liaison forte entre C et O (distance 1.23 Å, corrélation φ=-0.951)",
+    "strong_pairs": [
+      [
+        "C",
+        "O",
+        -0.951,
+        1.231
+      ],
+      [
+        "C",
+        "O",
+        -0.951,
+        1.231
+      ],
+      [
+        "C",
+        "O",
+        -0.951,
+        1.232
+      ],
+      [
+        "C",
+        "O",
+        -0.951,
+        1.232
+      ],
+      [
+        "C",
+        "O",
+        -0.951,
+        1.232
+      ]
+    ],
+    "hbond_pairs": [],
+    "top_pairs": [
+      [
+        "C",
+        "O",
+        -0.951,
+        1.231
+      ],
+      [
+        "C",
+        "O",
+        -0.951,
+        1.231
+      ],
+      [
+        "C",
+        "O",
+        -0.951,
+        1.232
+      ],
+      [
+        "C",
+        "O",
+        -0.951,
+        1.232
+      ],
+      [
+        "C",
+        "O",
+        -0.951,
+        1.232
+      ]
+    ]
+  },
+  "test_5_invariance_zk": {
+    "verdict": "PASS",
+    "energy_run1": -3.4871435165405273,
+    "energy_run2": -5.358275890350342,
+    "energies_different": true,
+    "topo_hash_run1": "88f4918556f636108c8c95a65fb77e64cb9293506f7d7741f4feb6706889c33d",
+    "topo_hash_run2": "88f4918556f636108c8c95a65fb77e64cb9293506f7d7741f4feb6706889c33d",
+    "topo_hash_identical": true,
+    "zk_valid_run1": true,
+    "zk_valid_run2": true,
+    "zk_time_ms_run1": 0.8
+  }
+}
