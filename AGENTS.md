@@ -1,12 +1,35 @@
-# AGENTS.md — RATISS Aeon Agent
+# AGENTS.md — RATISS-ODV-AEON (moteur algorithmique)
 
 ## Contexte du projet
-- **Auteur** : Jonathan Evina (18, Cameroun) · ORCID 0009-0000-4092-5313 · DOI 10.17605/OSF.IO/6JZMB
-- **Objectif** : Agent scientifique autonome souverain (quantum + topology + bio + crypto + browser + terminal + python + web + contenu) pour incubateurs/investisseurs
-- **Dépôt** : `ratiss-aeon-agent` (GitHub: evinajonathan13-max), branche `main`
-- **Source** : extension de `ratiss-kkl` (PR #1 merged)
-- **Version** : 9.4.0 (kernel ratiss_v9_aeon_prime) — UI React immersive + couche d'auto-amélioration RLM/Continual Harness + identité souveraine ancrée + mémoire persistante
+- **Auteur** : Jonathan Evina · ORCID 0009-0000-4092-5313 · DOI 10.17605/OSF.IO/6JZMB
+- **Objectif** : Moteur algorithmique pur de RATISS V9 Aeon Prime (quantum + topology + bio + crypto). Pas d'interface, pas d'écran — uniquement le cerveau.
+- **Dépôt** : `RATISS-ODV-AEON` (GitHub: evinajonathan13-max), branche `main`
+- **Source** : extraction du moteur de `ratiss-aeon-agent` (l'UI React/FastAPI a été retirée).
+- **Théorie** : Tryperposition Topologique Fine (TTF) — voir `kernel/ttf/` + `proofs/ttf_5tests_results.json`
 - **Propriété intellectuelle** : JOHNKING0 & architecte Jonathan Evina
+
+## Commandes utiles
+- Installer les deps : `pip install numpy scipy networkx psutil` (gudhi/quspin optionnels, fallback natif sinon)
+- Lancer les 5 tests TTF : `python tests/test_ttf_5tests.py` (écrit `proofs/ttf_5tests_results.json`)
+- Démo LLM greffé : `python scripts/ttf_agent_demo.py` (écrit `proofs/ttf_agent_demo_results.json`)
+- Données réelles : `proofs/agent_run_v9.4/4MZI.pdb` (mutant p53, 1518 atomes)
+
+## Architecture du moteur
+- `kernel/` — Noyau scientifique RATISS V9 (main.py, bridge.py, solvers/, connectors/, core/, system/, zk/, redteam/)
+- `kernel/ttf/` — **NOUVEAU** Cerveau unifié TTF (Tryperposition Topologique Fine, Modélisation 2 « TTF-Compute »)
+  - `ttf_compute.py` — `TTFBrain`, `IntricatedGraph` (G(V,E) w_Q+w_I), `TJTransmitter` (démodulation), `RipsTranslator` (Betti à la volée + compression), `MatrixRLM` (RLM sans mots), `CorrelationBitMemory` (MCB, 3 octets/triplet), `CollapseWell` (puits + TSP Held-Karp/2-opt). Réutilise `quantum_solver`, `prover_bridge`.
+  - Boucle : oscillate → transmit → translate → RLM/MCB → puits(décohérence>Dc) → TSP minimal (gluon d'info) → ZK.
+  - `topological_form_hash()` : hash de la forme topologique (invariant), PAS de l'énergie (invariance ZK).
+- `orchestrator/` — agent agentique (Plan → Execute → Certify), cascade, auto-improve, llm_router, skill_manager
+- `security/` — vault API, sandbox, session, vuln scanner, isolateur workspace
+- `tools/` — exécuteurs terminal/python/browser/web/fichiers
+- `proofs/` — preuves + scripts de test (4MZI.pdb, runs v9.4, FRL emergent)
+- `config/` — identité souveraine + imports autorisés ; `scripts/` ; `tests/`
+
+## Théorie TTF (Tryperposition Topologique Fine)
+H_TTF = H_tJ ⊗ I_Geni + I_Q ⊗ H_Geni + λ(t)·Φ, avec Φ=∇S·∇T·θ(t), λ(t)=±cos(ωt).
+Milieu « géni » = oscillateur de phase θ(t)=cos(ωt). Puits d'effondrement V=-k/(1+d_topo²) + TSP minimal.
+5 tests sur PDB réel 4MZI : oscillation synchrone (anti-corr A/B=-1), compression topologique (×2.75), TSP aveugle retrouve liaisons C=O, MCB→LLM (reconstruction sans mots), invariance ZK (même hash topo, énergies ≠). 5/5 PASS.
 
 ## Architecture (29 skills + couche RLM)
 - `kernel/` — Noyau scientifique RATISS V9 (main.py, bridge.py, solvers/, connectors/, core/, system/, zk/)

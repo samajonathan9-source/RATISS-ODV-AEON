@@ -456,7 +456,9 @@ class CollapseWell:
         return decoherence > self.Dc
 
     def collect(self, mcb: CorrelationBitMemory) -> None:
-        self.collected = list(mcb.buffer)
+        # on ACCUMULE les MCB des effondrements successifs (le puits accumule
+        # les gluons d'info, il ne les remplace pas).
+        self.collected.extend(list(mcb.buffer))
         mcb.clear()
 
     def tsp_minimal(self, coords: np.ndarray) -> dict:
