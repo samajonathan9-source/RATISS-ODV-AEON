@@ -1,0 +1,72 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Environnement
+.env
+.venv/
+venv/
+env/
+
+# Secrets — JAMAIS committer
+*.key
+*.pem
+secrets/
+config/agent_aligned.json
+
+# Workspace artefacts (générés à l'exécution)
+workspace/*/session_*/
+workspace/vault/
+workspace/*/step_*.json
+workspace/*/result.json
+workspace/*/zk_receipt.b64
+!workspace/.gitkeep
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Logs
+*.log
+tmp_exports/
+
+# Workspace generated artifacts (PDFs, PNGs, HTML)
+workspace/*/
+workspace/*.pdf
+workspace/*.png
+workspace/*.html
+workspace/*.svg
+!workspace/.gitkeep
+
+# Harness d'auto-amélioration (état généré à l'exécution)
+# (trajectoires, leçons archivées, snapshots versionnés, état courant)
+harness/
+!harness/.gitkeep
+
+# Frontend React (build artefacts et deps)
+app/frontend/node_modules/
+app/frontend/dist/
+app/static/assets/
+app/static/index.html
+
+# Vault de cles API (chiffre au repos -- ne jamais committer)
+config/api_vault.json
+config/api_vault.key
+
+# Mémoire personnelle persistante de Ratiss (données utilisateur runtime)
+config/sovereign_memory.json
+
+# Structural Data Vault (FRL) — cache régénérable depuis les trajectoires
+# (le graphe est stateless : rebuild_from_trajectories() le reconstruit à l'identique)
+data/structural_vault.json
+proofs/frl_emergent_run/structural_vault.json
+proofs/frl_emergent_run/structural_vault_export.json
