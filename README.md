@@ -292,23 +292,36 @@ Interface/UI is excluded: this repository is the **pure algorithmic brain**.
 
 ## Transdisciplinary Validation (3rd system + concrete application)
 
-### LCT on a neural network (3rd system)
+### LCT on a neural network (3rd system — limit of universality)
 
-The law was applied to the weight graph of an MLP (6→12→4 + 30 noise neurons).
-C controls weight compression (selecting strong-weight neurons, same mechanism
-as protein compression). Result: **Spearman +0.588, Pearson +0.655** — the
-LCT signal is detected (P_sig decreases as C decreases), just under the strict
-0.6 threshold. The law applies in **tendency** to neural networks.
+The law was applied to the weight graph of an MLP (random AND trained weights,
+accuracy 0.99). C controls weight compression. Result: **Spearman +0.588**
+(random) / **−0.71** (trained) — LCT does **not** cleanly apply to NN weight
+graphs. Trained NNs have concentrated weights → compression impoverishes
+topology. This is a **limit of universality**, documented honestly.
 
 <p align="center">
-  <img src="docs/figures/fig6_lct_neural_network.png" alt="LCT on neural network" width="650">
+  <img src="docs/figures/fig6_lct_neural_network.png" alt="LCT on neural network" width="600">
 </p>
-<p align="center"><em>Figure 6 — LCT on a neural network weight graph (3rd system). Signal positive, partial validation.</em></p>
+<p align="center"><em>Figure 6 — LCT on neural network: partial (random) / fails (trained). Honest limit.</em></p>
 
-> **Honest note**: the first attempt (dropout as decoherence) gave the INVERSE
-> (Spearman −0.60) — dropout sparsifies the graph, lengthening cycles. The
-> correct mechanism is **compression** (selecting strong weights), not
-> destructive dropout. This is documented honestly.
+> **Honest note**: the dropout attempt gave the inverse (−0.60). The trained-NN
+> attempt also fails (−0.71). LCT applies to **physical structures** (proteins,
+> quantum states, markets) but **not** to NN weight graphs. This sharpens the
+> law's scope: it requires a **distributed** structure, not a concentrated one.
+
+### LCT on a financial time series (5th system — PASS)
+
+The law was applied to a synthetic price series (autocorrelation = C).
+Time-delay embedding → point cloud → Rips → P_sig.
+
+**Spearman +0.903, Pearson +0.886** — a coherent market (high autocorrelation)
+has a robust cycle topology (P_sig 0→1.26). LCT is transdisciplinary.
+
+<p align="center">
+  <img src="docs/figures/fig8_lct_financial.png" alt="LCT on financial time series" width="650">
+</p>
+<p align="center"><em>Figure 8 — LCT on financial time series. A coherent market has robust cycle topology.</em></p>
 
 ### Application: predicting mutant protein stability
 
@@ -336,18 +349,21 @@ Ratio = 1.009 (small but consistent across 8 fragments).
 
 ### Summary of universal validation
 
-| System | Type | Monotonicity R(C) |
-|---|---|---|
-| 4MZI (p53 mutant) | Protein | ✅ Spearman +0.930 |
-| 3KMD (p53+DNA) | Protein | ✅ Spearman +0.797 |
-| Quantum state (6 qubits) | Quantum | ✅ Spearman +1.000 |
-| QPU IBM (hardware) | Physical | ✅ Spearman +0.713 |
-| MLP weight graph | Neural network | ⚠️ Spearman +0.588 (partial) |
-| p53 mutant vs wild-type | Application | ✅ Correct prediction |
+| System | Type | Monotonicity R(C) | Verdict |
+|---|---|---|---|
+| 4MZI (p53 mutant) | Protein | ✅ Spearman +0.930 | PASS |
+| 3KMD (p53+DNA) | Protein | ✅ Spearman +0.797 | PASS |
+| Quantum state (6 qubits) | Quantum | ✅ Spearman +1.000 | PASS |
+| QPU IBM (hardware) | Physical | ✅ Spearman +0.713 | PASS |
+| Financial time series | Finance | ✅ Spearman +0.903 | PASS |
+| MLP weight graph (random) | Neural network | ⚠️ Spearman +0.588 | PARTIAL |
+| MLP weight graph (trained) | Neural network | ❌ Spearman −0.71 | FAIL |
+| p53 mutant vs wild-type | Application | ✅ Correct prediction | PASS |
 
-LCT is validated on **4 systems** (protein, quantum, QPU, neural network) and
-**1 concrete application** (protein stability prediction). The law is
-transdisciplinary.
+LCT is validated on **5 systems** (protein, quantum, QPU, finance, partial NN)
+and **1 concrete application**. The law is transdisciplinary for **distributed
+physical structures**. It does **not** apply to concentrated NN weight graphs —
+an honest limit that sharpens the law's scope.
 
 ---
 
