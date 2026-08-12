@@ -54,7 +54,13 @@ Sur hardware : la topologie de corrélation (partition de Bell) est **invariante
 
 L'**invariance** (partie purement quantique) est validée sur QPU ✅.
 
-La **monotonie** R(C) est validée **en simulation seulement** ❌ (sur QPU). Le QPU ne calcule pas la persistance H1 directement : mesurer R=P_sig à chaque θ nécessiterait un protocole de tomographie lourd (reconstruire l'état, calculer le complexe de Rips hors-QPU à chaque θ). C'est l'étape suivante, non franchie ici. On le dit clairement.
+La **monotonie** R(C) est validée **en simulation** sur la structure protéique (4MZI, 3KMD) ✅ ET sur l'**état quantique** par tomographie exacte (statevector, 6 qubits, Spearman +1.000 — P_sig croît de 0.62 à 0.86 quand C passe de 0 à 1) ✅.
+
+**Mais** la mesure allégée par **ombres classiques** (classical shadows, Huang-Kueng-Preskill) ne restitue **pas** la monotonie de P_sig sur ce système : la variation de P_sig est subtile (delta 0.24) et P_sig = max(persistance H1) est hypersensible (non-linéaire) au bruit d'estimation. Deux estimateurs testés (same-basis, puis débiaisé facteur 3) : Spearman ~0 même à k=2000 snapshots, MAE décent (0.21) mais valeurs désordonnées. Même la métrique linéaire λ1 (valeur propre principale) échoue.
+
+**Conclusion** : la validation de la **monotonie sur QPU à coût réduit** nécessite soit (a) le vrai estimateur d'ombres complet (matrice d'ombre ρ_k = ⊗(3|b⟩⟨b|−I) + trace, à implémenter proprement), soit (b) la tomographie complète (faisable pour petits systèmes, dim 64). Cette étape n'est **pas franchie** ici. On le dit clairement.
+
+Code de cette étape : `kernel/ttf/shadow_tomography.py` + `tests/test_shadow_lct.py` + `proofs/shadow_lct_results.json`.
 
 ## Ce qu'on a prouvé, honnêtement
 
