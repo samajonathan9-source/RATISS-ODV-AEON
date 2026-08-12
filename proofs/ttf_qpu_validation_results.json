@@ -1,0 +1,55 @@
+{
+  "algo1_oscillation_synchrone": {
+    "algo": "1_oscillation_synchrone",
+    "backend": "ibm_kingston",
+    "job_id": "d9ttpfj43mgs73es7feg",
+    "shots": 2048,
+    "n_circuits": 40,
+    "corr_C_vs_cos": 0.9992841195065546,
+    "omega_C": 1.5707963267948966,
+    "omega_attendu": 1.5707963267948966,
+    "C_min": -0.89453125,
+    "C_max": 0.89453125,
+    "verdict": "PASS",
+    "C_theta_sample": [
+      0.8945,
+      0.8838,
+      0.8574,
+      0.8047,
+      0.7285,
+      0.6348,
+      0.5381,
+      0.3975
+    ]
+  },
+  "algo2_invariance_ZK": {
+    "algo": "2_invariance_ZK",
+    "backend": "ibm_kingston",
+    "job_id": "d9tu0kd35hes73fj6edg",
+    "shots": 4096,
+    "theta_E1": 0.7853981633974483,
+    "theta_E2": 2.356194490192345,
+    "energy_E1": 0.396240234375,
+    "energy_E2": 1.646484375,
+    "energies_different": true,
+    "form_hash_E1": "380a69c0ceb6cdbae685aa84734526e1d500e2b9a7eda877e53d7053e9b1e8da",
+    "form_hash_E2": "380a69c0ceb6cdbae685aa84734526e1d500e2b9a7eda877e53d7053e9b1e8da",
+    "form_hash_identical": true,
+    "shape_hash_E1": "c401f82634c6ca4639d7ed10df2a25398a1b423937427ee0dcc403010a8829a4",
+    "shape_hash_E2": "c401f82634c6ca4639d7ed10df2a25398a1b423937427ee0dcc403010a8829a4",
+    "verdict": "PASS",
+    "dist_E1": {
+      "00": 0.735107421875,
+      "11": 0.13134765625,
+      "01": 0.120849609375,
+      "10": 0.0126953125
+    },
+    "dist_E2": {
+      "11": 0.775390625,
+      "00": 0.12890625,
+      "10": 0.053466796875,
+      "01": 0.042236328125
+    },
+    "note": "Metrique corrigee: hash de la topologie de Bell (partition meme-spin vs spin-oppose), invariante au bruit QPU. Verifiee sur les counts physiques du job d9tu0kd35hes73fj6edg."
+  }
+}
