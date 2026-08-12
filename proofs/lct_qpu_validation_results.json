@@ -1,0 +1,27 @@
+{
+  "law": "LCT_invariance_ZK",
+  "backend": "ibm_marrakesh",
+  "job_id": "d9tut3r43mgs73es9elg",
+  "shots": 4096,
+  "theta_E1": 0.5235987755982988,
+  "theta_E2": 2.6179938779914944,
+  "energy_E1": 0.15234375,
+  "energy_E2": 1.83447265625,
+  "energies_different": true,
+  "topo_hash_E1": "380a69c0ceb6cdbae685aa84734526e1d500e2b9a7eda877e53d7053e9b1e8da",
+  "topo_hash_E2": "380a69c0ceb6cdbae685aa84734526e1d500e2b9a7eda877e53d7053e9b1e8da",
+  "topo_hash_identical": true,
+  "verdict": "PASS",
+  "dist_E1": {
+    "00": 0.912109375,
+    "01": 0.010986328125,
+    "11": 0.064453125,
+    "10": 0.012451171875
+  },
+  "dist_E2": {
+    "11": 0.9013671875,
+    "00": 0.06689453125,
+    "01": 0.017822265625,
+    "10": 0.013916015625
+  }
+}
