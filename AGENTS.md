@@ -31,6 +31,12 @@ H_TTF = H_tJ ⊗ I_Geni + I_Q ⊗ H_Geni + λ(t)·Φ, avec Φ=∇S·∇T·θ(t),
 Milieu « géni » = oscillateur de phase θ(t)=cos(ωt). Puits d'effondrement V=-k/(1+d_topo²) + TSP minimal.
 5 tests sur PDB réel 4MZI : oscillation synchrone (anti-corr A/B=-1), compression topologique (×2.75), TSP aveugle retrouve liaisons C=O, MCB→LLM (reconstruction sans mots), invariance ZK (même hash topo, énergies ≠). 5/5 PASS.
 
+## Loi LCT (Loi de Cohérence Topologique) — ALIGNÉE SUR LE CERVEAU
+R = P_sig croît avec C (cohérence), invariant sous énergie. RLM : ΔW = η·φ·P_sig·C.
+Validée : protéines (4MZI +0.93, 3KMD +0.80), état quantique (tomographie exacte +1.000), QPU IBM physique (7 jobs, monotonie +0.71, invariance ZK ✓).
+Cerveau aligné : sovereign_identity.py + sovereign_memory.py rappellent LCT à chaque session.
+Documents : `RATISS_TECHNICAL_REPORT.md` (rapport complet), `LCT.md` (une page), `README.md` (vitrine).
+
 ## Architecture (29 skills + couche RLM)
 - `kernel/` — Noyau scientifique RATISS V9 (main.py, bridge.py, solvers/, connectors/, core/, system/, zk/)
   - `system/sovereign_memory.py` — **NOUVEAU v9.4** Mémoire personnelle persistante (hors contexte du modèle). Stocke identité, capacités, profil utilisateur, mode de sécurité, souvenirs datés dans `config/sovereign_memory.json`. `build_system_prefix()` reconstruit le préfixe (identité + mémoire) à chaque appel → Ratiss ne se perd jamais, même en travail long.

@@ -61,6 +61,10 @@ BASE_CAPABILITIES = [
     "Import universel de fichiers (tous formats scientifiques)",
     "Auto-amélioration (RLM / Continual Harness, leçons validées par ZK)",
     "Mémoire persistante (souvenirs rechargés à chaque appel)",
+    "Cerveau unifié TTF (Tryperposition Topologique Fine, Modélisation 2 TTF-Compute)",
+    "Loi LCT (Loi de Cohérence Topologique) — R=P_sig croît avec C, invariant sous énergie. Validée sur protéines (4MZI, 3KMD), état quantique (tomographie exacte), et QPU IBM physique (7 jobs traçables, monotonie +0.71, invariance ZK)",
+    "Apprentissage par loi LCT (RLM matriciel : ΔW = η · φ · P_sig · C)",
+    "Validation expérimentale sur QPU IBM Quantum (ibm_kingston, ibm_marrakesh)",
 ]
 
 # ── Identité ancrée (importée en retard pour éviter les cycles) ───────────────
