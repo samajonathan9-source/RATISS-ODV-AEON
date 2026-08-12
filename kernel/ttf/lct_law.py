@@ -32,6 +32,18 @@ sys.path.insert(0, str(_ROOT))
 from kernel.ttf.ttf_compute import TTFBrain, _persistence_diagrams
 
 
+def _lct_p_sig(diagrams: dict) -> float:
+    """Extrait P_sig = persistance du cycle H1 le plus long d'un diagramme.
+
+    Helper utilisé par TTFBrain.step() pour injecter P_sig dans le RLM
+    (loi LCT : ΔW = η·φ·P_sig·C).
+    """
+    h1_pers = [d - b for b, d in diagrams.get(1, []) if d != float("inf") and d > b]
+    if h1_pers:
+        return float(sorted(h1_pers, reverse=True)[0])
+    return 0.0
+
+
 @dataclass
 class LCTMeasurement:
     """Une mesure de la loi LCT à un θ donné."""

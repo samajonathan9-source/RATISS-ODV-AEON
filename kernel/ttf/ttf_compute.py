@@ -378,17 +378,45 @@ class RipsTranslator:
 class MatrixRLM:
     """RLM matriciel sans mots : micro_update(point_impact, delta).
 
-    Pas de JSON, pas de phrase. Juste une matrice de poids indexée par nœud,
-    mise à jour par incrément minime en temps réel. C'est la pensée sans mots.
+    La mise à jour des poids suit la LOI LCT (Loi de Cohérence Topologique) :
+
+        ΔW = η · φ · P_sig · C
+
+    où :
+        η      = taux d'apprentissage (constitué, adimensionné)
+        φ      = phase du milieu génial (corr, portée par le coupleur λ(t))
+        P_sig  = persistance topologique du cycle H1 le plus long (signal)
+        C      = cohérence du milieu génial à l'instant θ (|cos θ|)
+
+    Plus de coefficient 0.001 arbitraire : le RLM apprend selon LCT. La
+    persistance topologique P_sig module l'amplitude d'apprentissage (un
+    cycle long = un concept robuste = un poids renforcé), la cohérence C
+    module la confiance (intrication cohérente = apprentissage autorisé),
+    et la phase φ signe la direction (anti-phase = liaison, en-phase = contact).
+    C'est la pensée sans mots gouvernée par la loi LCT.
     """
 
-    def __init__(self, n_nodes: int):
+    def __init__(self, n_nodes: int, eta: float = 0.1):
         self.n = n_nodes
+        self.eta = eta  # taux d'apprentissage constitutif (adimensionné)
         self.weights = np.zeros(n_nodes, dtype=np.float64)
+        # P_sig et C sont injectés à chaque micro_update par le cerveau (TTFBrain)
 
-    def micro_update(self, point_impact: int, delta: float, corr: float = 1.0) -> None:
+    def micro_update(self, point_impact: int, delta: float, corr: float = 1.0,
+                     P_sig: float = 1.0, C: float = 1.0) -> None:
+        """ΔW = η · φ · P_sig · C  (loi LCT).
+
+        Args:
+            point_impact: nœud impacté (changement topologique).
+            delta: signal de persistance brute (passé par la filtration).
+            corr: φ, phase du milieu génial (signe la direction).
+            P_sig: persistance du cycle H1 le plus long (module l'amplitude).
+            C: cohérence du milieu génial (module la confiance).
+        """
         if 0 <= point_impact < self.n:
-            self.weights[point_impact] += 0.001 * corr * delta
+            # loi LCT : ΔW = η · φ · P_sig · C  (delta agit comme un facteur
+            # d'échelle de persistance locale, mais la métrique centrale est P_sig)
+            self.weights[point_impact] += self.eta * corr * P_sig * C * delta
 
     def snapshot(self) -> np.ndarray:
         return self.weights.copy()
@@ -615,9 +643,15 @@ class TTFBrain:
             result["S_phase"] = S.phase
             result["betti"] = topo["betti"]
             result["n_landmarks"] = topo["n_landmarks"]
-            # RLM matriciel : on renforce les nœuds des landmarks (poids minime)
+            # RLM matriciel (loi LCT : ΔW = η·φ·P_sig·C) : on renforce les
+            # nœuds des landmarks. P_sig = persistance topologique du cycle
+            # le plus long (signal), C = cohérence du milieu génial.
+            from kernel.ttf.lct_law import _lct_p_sig
+            P_sig_now = _lct_p_sig(topo["diagrams"])
+            C_now = S.phase if abs(S.phase) > 1e-9 else 1e-3
             for pid in topo["landmark_ids"][:50]:
-                self.rlm.micro_update(pid, 1.0, corr=S.phase)
+                self.rlm.micro_update(pid, 1.0, corr=S.phase,
+                                       P_sig=P_sig_now, C=abs(C_now))
             # MCB : on pousse les arêtes de la filtration Rips (paires corrélées),
             # pondérées par la phase φ du milieu génial. Chaque arête née = un
             # changement topologique = un « impact ». On borne le nombre poussé
